@@ -1,0 +1,182 @@
+* {
+    box-sizing: border-box;
+    font-family: Arial, Helvetica, sans-serif;
+}
+
+body {
+    background: #f5f7fa;
+    margin: 0;
+    padding: 40px;
+    color: #333;
+}
+
+h1 {
+    text-align: center;
+    margin-bottom: 30px;
+}
+
+/* ====== FORM ====== */
+
+#form-area {
+    max-width: 600px;
+    margin: 0 auto 40px;
+    background: #fff;
+    padding: 24px;
+    border-radius: 10px;
+    box-shadow: 0 6px 20px rgba(0,0,0,0.08);
+}
+
+#review-form label {
+    font-weight: 600;
+    display: block;
+    margin-bottom: 6px;
+}
+
+#review-form input,
+#review-form textarea,
+#review-form select {
+    width: 100%;
+    padding: 10px 12px;
+    border: 1px solid #ccc;
+    border-radius: 6px;
+    outline: none;
+    margin-bottom: 14px;
+    transition: 0.2s;
+}
+
+#review-form input:focus,
+#review-form textarea:focus,
+#review-form select:focus {
+    border-color: #4f46e5;
+    box-shadow: 0 0 0 2px rgba(79,70,229,0.1);
+}
+
+#review-form textarea {
+    min-height: 100px;
+    resize: vertical;
+}
+
+#review-form button {
+    width: 100%;
+    padding: 12px;
+    background: #4f46e5;
+    border: none;
+    border-radius: 6px;
+    color: white;
+    font-weight: 600;
+    cursor: pointer;
+    transition: 0.2s;
+}
+
+#review-form button:hover {
+    background: #4338ca;
+}
+
+#review-form button:disabled {
+    background: #aaa;
+    cursor: not-allowed;
+}
+
+.error {
+    color: #dc2626;
+    font-size: 13px;
+    margin-top: -8px;
+    margin-bottom: 8px;
+}
+
+#form-success {
+    margin-top: 10px;
+    color: #16a34a;
+    font-weight: 600;
+}
+
+/* ====== REVIEWS ====== */
+
+#reviews-list {
+    max-width: 600px;
+    margin: 0 auto;
+}
+
+.review {
+    background: white;
+    padding: 18px 20px;
+    border-radius: 10px;
+    margin-bottom: 14px;
+    box-shadow: 0 4px 14px rgba(0,0,0,0.07);
+    animation: fadeIn 0.35s ease;
+}
+
+.review strong {
+    font-size: 16px;
+}
+
+.review span {
+    color: #6b7280;
+    font-size: 12px;
+}
+
+.review hr {
+    border: none;
+    border-top: 1px solid #e5e7eb;
+    margin: 12px 0;
+}
+
+.review-rating {
+    margin-top: 6px;
+    font-size: 14px;
+    color: #f59e0b;
+}
+
+@keyframes fadeIn {
+    from { opacity: 0; transform: translateY(6px); }
+    to { opacity: 1; transform: translateY(0); }
+}
+
+/* ====== LOAD MORE ====== */
+
+#load-more-area {
+    text-align: center;
+    margin-top: 20px;
+}
+
+#load-more {
+    padding: 10px 20px;
+    background: #10b981;
+    border: none;
+    border-radius: 6px;
+    color: white;
+    font-weight: 600;
+    cursor: pointer;
+    transition: 0.2s;
+}
+
+#load-more:hover {
+    background: #059669;
+}
+
+#load-more:disabled {
+    background: #9ca3af;
+    cursor: not-allowed;
+}
+
+/* ====== STAR INPUT ====== */
+
+.star-rating {
+    display: flex;
+    font-size: 26px;
+    cursor: pointer;
+    margin-bottom: 10px;
+}
+
+.star {
+    color: #d1d5db; /* серые */
+    text-align: center;
+    width: 40px;
+    transition: 0.2s;
+    user-select: none;
+}
+
+.star.hover,
+.star.active {
+    color: #f59e0b; /* жёлтые */
+}

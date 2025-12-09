@@ -4,7 +4,7 @@
     <meta charset="utf-8">
     <meta name="csrf-token" content="{{ csrf_token() }}">
     <title>Отзывы</title>
-    <!-- подключи стили / vite, если нужно -->
+    <link rel="stylesheet" href="{{ asset('css/reviews.css') }}">
 </head>
 <body>
     <h1>Отзывы</h1>
@@ -24,16 +24,18 @@
             </div>
 
             <div>
-                <label>Оценка *</label><br>
-                <select name="rating" id="rating">
-                    <option value="1">1</option>
-                    <option value="2">2</option>
-                    <option value="3" selected>3</option>
-                    <option value="4">4</option>
-                    <option value="5">5</option>
-                </select>
+                <label>Оценка *</label>
+
+                <div id="star-rating" class="star-rating">
+                    @for ($i = 1; $i <= 5; $i++)
+                        <span class="star" data-value="{{ $i }}">☆</span>
+                    @endfor
+                </div>
+
+                <input type="hidden" name="rating" id="rating" value="3">
                 <div class="error" id="error-rating"></div>
             </div>
+
 
             <button type="submit">Отправить</button>
         </form>
@@ -165,6 +167,41 @@
                 }
             });
         }
+
+        // ====== STAR RATING INPUT ======
+        const stars = document.querySelectorAll('#star-rating .star');
+        const ratingInput = document.getElementById('rating');
+        let currentRating = Number(ratingInput.value || 3);
+
+        function renderStars(value) {
+            stars.forEach(star => {
+                const v = Number(star.dataset.value);
+                star.textContent = v <= value ? '⭐' : '☆';
+                star.classList.toggle('active', v <= value);
+            });
+        }
+
+        // начальная отрисовка
+        renderStars(currentRating);
+
+        // hover
+        stars.forEach(star => {
+            star.addEventListener('mouseenter', () => {
+                renderStars(Number(star.dataset.value));
+            });
+
+            star.addEventListener('mouseleave', () => {
+                renderStars(currentRating);
+            });
+
+            // click
+            star.addEventListener('click', () => {
+                currentRating = Number(star.dataset.value);
+                ratingInput.value = currentRating;
+                renderStars(currentRating);
+            });
+        });
+
     })();
     </script>
 </body>
